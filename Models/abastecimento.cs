@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace testeBitzen.Models
 {
-    public class Abastecimentos
+    public class Abastecimento
     {
         [Key]
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace testeBitzen.Models
         public string TipoDoCombustivel { get; set; }
 
         [Required(ErrorMessage = "Veículo é obrigatorio")]
-        public Veiculos Veiculo { get; set; }
+        public Veiculo Veiculo { get; set; }
 
     }
 }

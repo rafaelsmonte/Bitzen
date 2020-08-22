@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace testeBitzen.Models
 {
-    public class Veiculos
+    public class Veiculo
     {
+        static int ano = DateTime.Now.Year;
         [Key]
         public int Id { get; set; }
 
@@ -19,7 +20,7 @@ namespace testeBitzen.Models
         public string Modelo { get; set; }
 
         [Required(ErrorMessage = "Ano é obrigatorio")]
-        [Range(1,2020, ErrorMessage = "Este campo é obrigatorio")]
+        [Range(1,2021, ErrorMessage = "Ano tem que ser entra 1 e 2021")]
         public int Ano { get; set; }
 
         [Required(ErrorMessage = "Placa é obrigatoria")]
