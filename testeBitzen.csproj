@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetEnv" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ASpnetcore.authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.ASpnetcore.authentication.jwtbearer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.inMemory" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />

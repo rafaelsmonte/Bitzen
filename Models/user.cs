@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace testeBitzen.Models
 {
@@ -16,7 +17,10 @@ namespace testeBitzen.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatoria")]
-        public string Senha { get; set; }
+        [MinLength(3, ErrorMessage = "Senha deve conter entre 6 e 20 caracteres")]
+        [MaxLength(100, ErrorMessage = "Nome deve conter entre 6 e 20 caracteres")]
 
+        public string Senha { get; set; }
+       
     }
 }

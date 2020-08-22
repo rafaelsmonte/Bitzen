@@ -25,12 +25,16 @@ namespace testeBitzen.Models
         public string Posto { get; set; }
 
         [Required(ErrorMessage = "Responsável é obrigatorio")]
+        public int ResponsavelID { get; set; }
+
         public User Responsavel { get; set; }
 
         [Required(ErrorMessage = "Tipo do combustivel é obrigatorio")]
         public string TipoDoCombustivel { get; set; }
 
         [Required(ErrorMessage = "Veículo é obrigatorio")]
+        public int VeiculoID { get; set; }
+        
         public Veiculo Veiculo { get; set; }
 
     }
