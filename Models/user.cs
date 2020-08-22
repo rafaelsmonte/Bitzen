@@ -19,6 +19,7 @@ namespace testeBitzen.Models
         [Required(ErrorMessage = "Senha é obrigatoria")]
         [MinLength(3, ErrorMessage = "Senha deve conter entre 6 e 20 caracteres")]
         [MaxLength(100, ErrorMessage = "Nome deve conter entre 6 e 20 caracteres")]
+       
 
         public string Senha { get; set; }
        

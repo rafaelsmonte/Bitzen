@@ -38,7 +38,7 @@ namespace testeBitzen.Models
         [Range(1,int.MaxValue, ErrorMessage = "Quilometragem deve ser maior que zero")]
         public int KM { get; set; }
         [Required(ErrorMessage = "Resposável é obrigatorio")]
-        public int ResponsavelID { get; set; }
+        public int ResponsavelId { get; set; }
         public User Responsavel { get; set; }
 
 

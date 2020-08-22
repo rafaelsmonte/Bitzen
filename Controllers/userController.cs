@@ -23,6 +23,7 @@ namespace testeBitzen.Controllers
             User user = await context.Users.Where(u => u.Email == model.Email && u.Senha == senha).FirstOrDefaultAsync();
             if (user == null)
                 return NotFound(new { message = "Usuário não encontrado" });
+            user.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);;
             var token = TokenService.GenerateToken(user);
             user.Senha = "";
             return new
@@ -55,7 +56,7 @@ namespace testeBitzen.Controllers
             User user;
 
             if (model.Id == 0)
-                NotFound(model);
+                BadRequest(model);
 
             if (ModelState.IsValid)
             {
@@ -82,7 +83,7 @@ namespace testeBitzen.Controllers
         {
             User user;
             if (model.Id == 0)
-                NotFound(model);
+                BadRequest(model);
             user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
             if (user != null)
             {
