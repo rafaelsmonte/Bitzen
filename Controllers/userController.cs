@@ -50,57 +50,61 @@ namespace testeBitzen.Controllers
 
                 }
                 else
-                    return BadRequest(new { Email="Email já cadastrado"});
+                    return BadRequest(new { Email = "Email já cadastrado" });
 
-        }
+            }
             else
                 return BadRequest(ModelState);
-    }
-    [HttpPut]
-    [Route("")]
-    public async Task<ActionResult<dynamic>> Update([FromServices] DataContext context, [FromBody] User model)
-    {
-        User user;
-
-        if (model.Id == 0)
-            BadRequest(model);
-
-        if (ModelState.IsValid)
+        }
+        [HttpPut]
+        [Route("")]
+        public async Task<ActionResult<dynamic>> Update([FromServices] DataContext context, [FromBody] User model)
         {
+            User user;
+
+            if (model.Id == 0)
+                BadRequest(model);
+
+            if (ModelState.IsValid)
+            {
+                user = await context.Users.Where(u => u.Email == model.Email).FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
+                    if (user != null)
+                    {
+                        context.Entry(user).State = EntityState.Detached;
+                        model.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);
+                        context.Users.Update(model);
+                        await context.SaveChangesAsync();
+                        model.Senha = "";
+                        return model;
+                    }
+                    else
+                        return
+                        NotFound(model);
+                }return BadRequest(new { Email = "Email já cadastrado" });
+            }
+            else
+                return BadRequest(ModelState);
+        }
+        [HttpDelete]
+        [Route("")]
+        public async Task<ActionResult<dynamic>> Delete([FromServices] DataContext context, [FromBody] User model)
+        {
+            User user;
+            if (model.Id == 0)
+                BadRequest(model);
             user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
             if (user != null)
             {
                 context.Entry(user).State = EntityState.Detached;
-                model.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);
-                context.Users.Update(model);
+                context.Users.Remove(model);
                 await context.SaveChangesAsync();
-                model.Senha = "";
-                return model;
+                return Ok(new { Message = "deletado com sucesso" });
             }
             else
-                return
-                NotFound(model);
+                return NotFound(model);
         }
-        else
-            return BadRequest(ModelState);
     }
-    [HttpDelete]
-    [Route("")]
-    public async Task<ActionResult<dynamic>> Delete([FromServices] DataContext context, [FromBody] User model)
-    {
-        User user;
-        if (model.Id == 0)
-            BadRequest(model);
-        user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
-        if (user != null)
-        {
-            context.Entry(user).State = EntityState.Detached;
-            context.Users.Remove(model);
-            await context.SaveChangesAsync();
-            return Ok(new { Message = "deletado com sucesso" });
-        }
-        else
-            return NotFound(model);
-    }
-}
 }
