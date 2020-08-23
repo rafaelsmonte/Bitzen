@@ -144,7 +144,6 @@ namespace testeBitzen.Controllers
                 {
                     context.Abastecimentos.Remove(model);
                     await context.SaveChangesAsync();
-                    model.Responsavel.Senha = "";
 
                     return Ok(new { Message = "deletado com sucesso" });
                 }

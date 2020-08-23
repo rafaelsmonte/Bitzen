@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "6855c10c-f1a7-4884-b5c8-3def60e076b7",
+		"name": "Abastecimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:5001/v1/abastecimento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgxMzA1MTcsImV4cCI6MTU5ODIxNjkxNywiaWF0IjoxNTk4MTMwNTE3fQ.aA7zlgGM0ELLk8ymfoNe5U0r-r2D319q3YsqjEYbO0w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \r\n    \"posto\" : \"ipiranga\",\r\n    \"ValorPago\" : 44,\r\n    \"KmDoAbastecimento\" : 6000,\r\n    \"LitrosAbastecidos\": 200,\r\n    \"ResponsavelId\":2,\r\n    \"TipoDoCombustivel\" : \"2\",\r\n    \"VeiculoId\": 6\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/abastecimento",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"abastecimento"
+					]
+				},
+				"description": "exemplo bem sucedido de post"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/abastecimento",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgxMzA1MTcsImV4cCI6MTU5ODIxNjkxNywiaWF0IjoxNTk4MTMwNTE3fQ.aA7zlgGM0ELLk8ymfoNe5U0r-r2D319q3YsqjEYbO0w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"posto\" : \"ipiranga\",\r\n    \"ValorPago\" : 44,\r\n    \"KmDoAbastecimento\" : 6000,\r\n    \"LitrosAbastecidos\": 200,\r\n    \"ResponsavelId\":2,\r\n    \"TipoDoCombustivel\" : \"2\",\r\n    \"VeiculoId\": 6\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/abastecimento",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"abastecimento"
+					]
+				},
+				"description": "exemplo bem sucedido de put"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/abastecimento",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgxMzA1MTcsImV4cCI6MTU5ODIxNjkxNywiaWF0IjoxNTk4MTMwNTE3fQ.aA7zlgGM0ELLk8ymfoNe5U0r-r2D319q3YsqjEYbO0w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/abastecimento",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"abastecimento"
+					]
+				},
+				"description": "exemplo bem sucedido de delete"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/abastecimento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgxMzA1MTcsImV4cCI6MTU5ODIxNjkxNywiaWF0IjoxNTk4MTMwNTE3fQ.aA7zlgGM0ELLk8ymfoNe5U0r-r2D319q3YsqjEYbO0w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/abastecimento",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"abastecimento"
+					]
+				},
+				"description": "exemplo bem sucedido de GET"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

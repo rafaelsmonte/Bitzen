@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "3c5e3e85-67d3-4135-a2c2-e6973937af8d",
+		"name": "relatorios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:5001/v1/relatorios/PagoPorAno/2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/relatorios/MediaMensal/2020",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"relatorios",
+						"MediaMensal",
+						"2020"
+					]
+				},
+				"description": "exemplo de get "
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/relatorios/PagoPorAno/2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/relatorios/KmRodadoPorAno/2020",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"relatorios",
+						"KmRodadoPorAno",
+						"2020"
+					]
+				},
+				"description": "exemplo de get bem sucedido"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/relatorios/PagoPorAno/2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/relatorios/PagoPorAno/2020",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"relatorios",
+						"PagoPorAno",
+						"2020"
+					]
+				},
+				"description": "exemplo de getr bem sucedido"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/relatorios/PagoPorAno/2020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/relatorios/AbastecidoPorAno/2020",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"relatorios",
+						"AbastecidoPorAno",
+						"2020"
+					]
+				},
+				"description": "exemplo de get bem sucedido"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

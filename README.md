@@ -1,3 +1,5 @@
+./PostmanCollection : Contem os arquivos de teste do postman
+
 ./DB/Docker: Contem o arquivo para subir o container do SQLServer    
 
 ./DB/scriptBanco.txt: Contem o script para gerar o banco de dados  

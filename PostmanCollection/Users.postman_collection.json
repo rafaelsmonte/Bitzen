@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "e862c8e6-39b4-408c-b3ad-3debf9267432",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:5001/v1/user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Nome\": \"Rafaelwe\",\r\n\"Email\": \"wezonn@hotmail.com\",\r\n\"senha\": \"123\",\r\n\"id\": 1\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"user"
+					]
+				},
+				"description": "Criacao bem sucedida de user    "
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Nome\": \"Rafaelwe\",\r\n\"Email\": \"wezonn@hotmail.com\",\r\n\"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"user"
+					]
+				},
+				"description": "exemplo de post bem sucedido"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 3\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"user"
+					]
+				},
+				"description": "exemplo de dele te bem sucedido"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/user/auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"wezonn@hotmail.com\",\r\n\"senha\": \"123\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/user/auth",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"user",
+						"auth"
+					]
+				},
+				"description": "exemplo de auth bem sucedido"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

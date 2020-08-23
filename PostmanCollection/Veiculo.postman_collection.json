@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "61b4c948-e5e2-4cad-8c2a-9fd61fb186c4",
+		"name": "Veiculo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:5001/v1/veiculo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/veiculo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"veiculo"
+					]
+				},
+				"description": "exemplo de get"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/veiculo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"km\": 1000,\r\n    \"Marca\": \"honda\",\r\n    \"Modelo\": \"civic\",\r\n    \"Placa\": \"1232322\",\r\n    \"TipoDoVeiculo\": \"carro\",\r\n    \"TipoDeCombustivel\": \"gasolina\",\r\n    \"responsavelid\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/veiculo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"veiculo"
+					]
+				},
+				"description": "exemplo bem sucedido de post"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/veiculo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"km\": 2000,\r\n    \"Marca\": \"honda\",\r\n    \"Modelo\": \"civic\",\r\n    \"Placa\": \"1232322\",\r\n    \"TipoDoVeiculo\": \"carro\",\r\n    \"TipoDeCombustivel\": \"gasolina\",\r\n    \"responsavelid\": 2,\r\n    \"id\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/veiculo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"veiculo"
+					]
+				},
+				"description": "exemplo de put bem sucedido"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5001/v1/veiculo",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJzbW9udGVAaG90bWFpbC5jb20iLCJuYmYiOjE1OTgyMTE2NzIsImV4cCI6MTU5ODI5ODA3MiwiaWF0IjoxNTk4MjExNjcyfQ.YeDWrap2GSaIlCPgcuvRGxMQ6ku7WtH2xoWpxQehf9s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/veiculo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"veiculo"
+					]
+				},
+				"description": "exemplo de delete bem sucedido\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
