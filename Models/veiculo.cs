@@ -20,7 +20,7 @@ namespace testeBitzen.Models
         public string Modelo { get; set; }
 
         [Required(ErrorMessage = "Ano é obrigatorio")]
-        [CheckAno( ErrorMessage = "Ano tem que ser entra 1 e 2021")]
+        [CheckAno( ErrorMessage = "Ano tem que ser entre 1 e o ano atual mais um")]
         public int Ano { get; set; }
 
         [Required(ErrorMessage = "Placa é obrigatoria")]

@@ -17,7 +17,11 @@ namespace testeBitzen.Models
         [Required(ErrorMessage = "Valor é obrigatorio")]
         [Range(0.1,float.MaxValue, ErrorMessage = "Valor deve ser maior que zero")]
         public double ValorPago { get; set; }
-        public DateTime DataDoAbastecimento {get;}
+
+        [Required(ErrorMessage = "Quantidade abastecida é obrigatoria")]
+        [Range(0.1,float.MaxValue, ErrorMessage = "Valor deve ser maior que zero")]
+        public double LitrosAbastecidos { get; set; }
+        public DateTime DataDoAbastecimento {get; set;}
 
         [Required(ErrorMessage = "Posto é obrigatorio")]
         [MaxLength(100, ErrorMessage = "Posto deve conter entre 3 e 100 caracteres")]

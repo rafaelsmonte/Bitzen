@@ -1,75 +1,108 @@
-CREATE TABLE [users]
+USE [bitzen]
+GO
+
+/****** Object:  Table [dbo].[users]    Script Date: 23/08/2020 16:36:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[users](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[email] [nvarchar](100) NOT NULL,
+	[senha] [nvarchar](100) NOT NULL,
+	[nome] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_user] PRIMARY KEY CLUSTERED 
 (
- [id]    int IDENTITY (1, 1) NOT NULL ,
- [email] nvarchar(100) NOT NULL ,
- [senha] nvarchar(100) NOT NULL ,
- [nome]  nvarchar(100) NOT NULL ,
-
-
- CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED ([id] ASC)
- CONSTRAINT UC_email UNIQUE (email)
-);
-GO
-
-CREATE TABLE [veiculos]
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
 (
- [id]                int IDENTITY (1, 1) NOT NULL ,
- [marca]             varchar(50) NOT NULL ,
- [modelo]            varchar(100) NOT NULL ,
- [ano]               int NOT NULL ,
- [placa]             varchar(7) NOT NULL ,
- [TipoDoVeiculo]     varchar(50) NOT NULL ,
- [TipoDeCombustivel] varchar(50) NOT NULL ,
- [KM]                int NOT NULL ,
- [ResponsavelId]     int NOT NULL ,
-
-
- CONSTRAINT [PK_veiculos] PRIMARY KEY CLUSTERED ([id] ASC),
- CONSTRAINT [FK_26] FOREIGN KEY ([ResponsavelId])  REFERENCES [users]([id])
-);
-GO
-
-
-CREATE NONCLUSTERED INDEX [fkIdx_26] ON [veiculos] 
- (
-  [ResponsavelId] ASC
- )
-
-GO
-
-
-CREATE TABLE [Abastecimentos]
+	[email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
 (
- [id]                  int IDENTITY (1, 1) NOT NULL ,
- [VeiculoId]           int NOT NULL ,
- [KmDoAbastecimento]   int NOT NULL ,
- [ValorPago]           float NOT NULL ,
- [DataDoAbastecimento] datetime NOT NULL ,
- [Posto]               varchar(100) NOT NULL ,
-[TipoDoCombustivel] varchar(50) NOT NULL ,
- [ResponsavelId]       int NOT NULL ,
-
-
- CONSTRAINT [PK_abastecimentos] PRIMARY KEY CLUSTERED ([id] ASC),
- CONSTRAINT [FK_29] FOREIGN KEY ([VeiculoId])  REFERENCES [veiculos]([id]),
- CONSTRAINT [FK_36] FOREIGN KEY ([ResponsavelId])  REFERENCES [users]([id])
-);
+	[email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
-
-CREATE NONCLUSTERED INDEX [fkIdx_29] ON [Abastecimentos] 
- (
-  [VeiculoId] ASC
- )
-
+USE [bitzen]
 GO
 
-CREATE NONCLUSTERED INDEX [fkIdx_36] ON [Abastecimentos] 
- (
-  [ResponsavelId] ASC
- )
-
+/****** Object:  Table [dbo].[veiculos]    Script Date: 23/08/2020 16:36:56 ******/
+SET ANSI_NULLS ON
 GO
 
+SET QUOTED_IDENTIFIER ON
+GO
 
-ALTER TABLE Abastecimentos ADD CONSTRAINT DF_Abastecimentos DEFAULT GETDATE() FOR DataDoAbastecimento
+CREATE TABLE [dbo].[veiculos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[marca] [varchar](50) NOT NULL,
+	[modelo] [varchar](100) NOT NULL,
+	[ano] [int] NOT NULL,
+	[placa] [varchar](7) NOT NULL,
+	[TipoDoVeiculo] [varchar](50) NOT NULL,
+	[TipoDeCombustivel] [varchar](50) NOT NULL,
+	[KM] [int] NOT NULL,
+	[ResponsavelId] [int] NOT NULL,
+ CONSTRAINT [PK_veiculos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[veiculos]  WITH CHECK ADD  CONSTRAINT [FK_26] FOREIGN KEY([ResponsavelId])
+REFERENCES [dbo].[users] ([id])
+GO
+
+ALTER TABLE [dbo].[veiculos] CHECK CONSTRAINT [FK_26]
+GO
+
+USE [bitzen]
+GO
+
+/****** Object:  Table [dbo].[Abastecimentos]    Script Date: 23/08/2020 16:37:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Abastecimentos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[VeiculoId] [int] NOT NULL,
+	[KmDoAbastecimento] [int] NOT NULL,
+	[ValorPago] [float] NOT NULL,
+	[DataDoAbastecimento] [datetime2](7) NOT NULL,
+	[Posto] [varchar](100) NOT NULL,
+	[TipoDoCombustivel] [varchar](50) NOT NULL,
+	[ResponsavelId] [int] NOT NULL,
+	[LitrosAbastecidos] [float] NULL,
+ CONSTRAINT [PK_abastecimentos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Abastecimentos] ADD  CONSTRAINT [DF_Abastecimentos]  DEFAULT (getdate()) FOR [DataDoAbastecimento]
+GO
+
+ALTER TABLE [dbo].[Abastecimentos]  WITH CHECK ADD  CONSTRAINT [FK_29] FOREIGN KEY([VeiculoId])
+REFERENCES [dbo].[veiculos] ([id])
+GO
+
+ALTER TABLE [dbo].[Abastecimentos] CHECK CONSTRAINT [FK_29]
+GO
+
+ALTER TABLE [dbo].[Abastecimentos]  WITH CHECK ADD  CONSTRAINT [FK_36] FOREIGN KEY([ResponsavelId])
+REFERENCES [dbo].[users] ([id])
+GO
+
+ALTER TABLE [dbo].[Abastecimentos] CHECK CONSTRAINT [FK_36]
+GO
+

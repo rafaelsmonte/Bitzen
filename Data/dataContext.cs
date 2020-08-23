@@ -18,9 +18,9 @@ namespace testeBitzen.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>()
-            .HasIndex(p => new { p.Email })
-            .IsUnique();
+             builder.Entity<Abastecimento>()
+            .Property(b => b.DataDoAbastecimento)
+            .HasDefaultValue(System.DateTime.Now);
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Abastecimento> Abastecimentos { get; set; }
