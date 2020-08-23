@@ -23,7 +23,7 @@ namespace testeBitzen.Controllers
             User user = await context.Users.Where(u => u.Email == model.Email && u.Senha == senha).FirstOrDefaultAsync();
             if (user == null)
                 return NotFound(new { message = "Usuário não encontrado" });
-            user.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);;
+            user.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha); ;
             var token = TokenService.GenerateToken(user);
             user.Senha = "";
             return new
@@ -39,61 +39,68 @@ namespace testeBitzen.Controllers
 
             if (ModelState.IsValid)
             {
-                model.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);
-                context.Users.Add(model);
-                await context.SaveChangesAsync();
-                model.Senha = "";
-
-                return Created("",model);
-            }
-            else
-                return BadRequest(ModelState);
-        }
-        [HttpPut]
-        [Route("")]
-        public async Task<ActionResult<dynamic>> Update([FromServices] DataContext context, [FromBody] User model)
-        {
-            User user;
-
-            if (model.Id == 0)
-                BadRequest(model);
-
-            if (ModelState.IsValid)
-            {
-                user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
-                if (user != null)
+                User user = await context.Users.Where(u => u.Email == model.Email).FirstOrDefaultAsync();
+                if (user == null)
                 {
-                    context.Entry(user).State = EntityState.Detached;
                     model.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);
-                    context.Users.Update(model);
+                    context.Users.Add(model);
                     await context.SaveChangesAsync();
                     model.Senha = "";
-                    return model;
+                    return Created("", model);
+
                 }
                 else
-                    return
-                    NotFound(model);
-            }
+                    return BadRequest(new { Email="Email já cadastrado"});
+
+        }
             else
                 return BadRequest(ModelState);
-        }
-        [HttpDelete]
-        [Route("")]
-        public async Task<ActionResult<dynamic>> Delete([FromServices] DataContext context, [FromBody] User model)
+    }
+    [HttpPut]
+    [Route("")]
+    public async Task<ActionResult<dynamic>> Update([FromServices] DataContext context, [FromBody] User model)
+    {
+        User user;
+
+        if (model.Id == 0)
+            BadRequest(model);
+
+        if (ModelState.IsValid)
         {
-            User user;
-            if (model.Id == 0)
-                BadRequest(model);
             user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
             if (user != null)
             {
                 context.Entry(user).State = EntityState.Detached;
-                context.Users.Remove(model);
+                model.Senha = Services.EncriptService.GenerateEcriptionSHA256(model.Senha);
+                context.Users.Update(model);
                 await context.SaveChangesAsync();
-                return Ok(new {Message=  "deletado com sucesso"});
+                model.Senha = "";
+                return model;
             }
             else
-                return NotFound(model);
+                return
+                NotFound(model);
         }
+        else
+            return BadRequest(ModelState);
     }
+    [HttpDelete]
+    [Route("")]
+    public async Task<ActionResult<dynamic>> Delete([FromServices] DataContext context, [FromBody] User model)
+    {
+        User user;
+        if (model.Id == 0)
+            BadRequest(model);
+        user = await context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
+        if (user != null)
+        {
+            context.Entry(user).State = EntityState.Detached;
+            context.Users.Remove(model);
+            await context.SaveChangesAsync();
+            return Ok(new { Message = "deletado com sucesso" });
+        }
+        else
+            return NotFound(model);
+    }
+}
 }

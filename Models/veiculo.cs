@@ -20,7 +20,7 @@ namespace testeBitzen.Models
         public string Modelo { get; set; }
 
         [Required(ErrorMessage = "Ano é obrigatorio")]
-        [Range(1,2021, ErrorMessage = "Ano tem que ser entra 1 e 2021")]
+        [CheckAno( ErrorMessage = "Ano tem que ser entra 1 e 2021")]
         public int Ano { get; set; }
 
         [Required(ErrorMessage = "Placa é obrigatoria")]
@@ -42,5 +42,17 @@ namespace testeBitzen.Models
         public User Responsavel { get; set; }
 
 
+    }
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public sealed class CheckAno : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            int intValue;
+            int.TryParse(value.ToString(),out intValue);
+            if(intValue < 0 || intValue > DateTime.Now.Year+1)
+                  return new ValidationResult(string.Format(this.ErrorMessage, 500));
+                return ValidationResult.Success;
+        }
     }
 }

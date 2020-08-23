@@ -16,11 +16,11 @@ namespace testeBitzen.Data
             optionsBuilder.UseSqlServer(
                 @"Server=" + server + ";Database=" + database + ";User Id=" + user + ";Password=" + password + ";");
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Email)
-                .IsUnique();
+            builder.Entity<User>()
+            .HasIndex(p => new { p.Email })
+            .IsUnique();
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Abastecimento> Abastecimentos { get; set; }

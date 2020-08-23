@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using testeBitzen.Data;
 
 namespace testeBitzen.Models
 {
@@ -14,14 +19,39 @@ namespace testeBitzen.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Email é obrigatorio")]
+        [CheckEmail(ErrorMessage = "Email inválido")]
+
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatoria")]
         [MinLength(3, ErrorMessage = "Senha deve conter entre 6 e 20 caracteres")]
         [MaxLength(100, ErrorMessage = "Nome deve conter entre 6 e 20 caracteres")]
-       
+
 
         public string Senha { get; set; }
-       
+
+
+
     }
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public sealed class CheckEmail : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(value.ToString());
+
+                return ValidationResult.Success;
+            }
+            catch (FormatException)
+            {
+              return new ValidationResult(string.Format(this.ErrorMessage, 500));
+
+            }
+        }
+    }
+    
 }
+
+
