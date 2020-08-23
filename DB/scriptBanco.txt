@@ -1,4 +1,4 @@
-CREATE TABLE [user]
+CREATE TABLE [users]
 (
  [id]    int IDENTITY (1, 1) NOT NULL ,
  [email] nvarchar(100) NOT NULL ,
@@ -6,7 +6,7 @@ CREATE TABLE [user]
  [nome]  nvarchar(100) NOT NULL ,
 
 
- CONSTRAINT [PK_user] PRIMARY KEY CLUSTERED ([id] ASC)
+ CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED ([id] ASC)
  CONSTRAINT UC_email UNIQUE (email)
 );
 GO
@@ -25,7 +25,7 @@ CREATE TABLE [veiculos]
 
 
  CONSTRAINT [PK_veiculos] PRIMARY KEY CLUSTERED ([id] ASC),
- CONSTRAINT [FK_26] FOREIGN KEY ([ResponsavelId])  REFERENCES [user]([id])
+ CONSTRAINT [FK_26] FOREIGN KEY ([ResponsavelId])  REFERENCES [users]([id])
 );
 GO
 
@@ -46,12 +46,13 @@ CREATE TABLE [Abastecimentos]
  [ValorPago]           float NOT NULL ,
  [DataDoAbastecimento] datetime NOT NULL ,
  [Posto]               varchar(100) NOT NULL ,
+[TipoDoCombustivel] varchar(50) NOT NULL ,
  [ResponsavelId]       int NOT NULL ,
 
 
  CONSTRAINT [PK_abastecimentos] PRIMARY KEY CLUSTERED ([id] ASC),
  CONSTRAINT [FK_29] FOREIGN KEY ([VeiculoId])  REFERENCES [veiculos]([id]),
- CONSTRAINT [FK_36] FOREIGN KEY ([ResponsavelId])  REFERENCES [user]([id])
+ CONSTRAINT [FK_36] FOREIGN KEY ([ResponsavelId])  REFERENCES [users]([id])
 );
 GO
 

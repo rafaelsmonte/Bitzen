@@ -30,16 +30,26 @@ namespace testeBitzen.Controllers
 
             if (ModelState.IsValid)
             {
-                context.Veiculos.Add(model);
-                await context.SaveChangesAsync();
+                User user = await context.Users.Where(x => x.Id == model.ResponsavelId).SingleOrDefaultAsync();
+                if (user != null)
+                {
+                    context.Entry(user).State = EntityState.Detached;
 
-                return Created("", model);
+                    context.Veiculos.Add(model);
+                    await context.SaveChangesAsync();
+
+                    return Created("", model);
+                }
+                else
+                    return BadRequest(new { ResponsavelId = "Usuario não existe" });
+
             }
             else
                 return BadRequest(ModelState);
         }
         [HttpPut]
         [Route("")]
+        [Authorize]
         public async Task<ActionResult<dynamic>> Update([FromServices] DataContext context, [FromBody] Veiculo model)
         {
 
@@ -49,15 +59,23 @@ namespace testeBitzen.Controllers
             {
                 var email = User.Claims.Where(c => c.Type == ClaimTypes.Email)
                    .Select(c => c.Value).SingleOrDefault();
+            
                 var veiculo = await context.Veiculos.Include(re => re.Responsavel)
                     .AsNoTracking()
                     .FirstOrDefaultAsync(x => x.Id == model.Id && x.Responsavel.Email == email);
                 if (veiculo != null)
                 {
-                    context.Entry(veiculo).State = EntityState.Detached;
-                    context.Veiculos.Update(model);
-                    await context.SaveChangesAsync();
-                    return model;
+                    User user = await context.Users.Where(x => x.Id == model.ResponsavelId).SingleOrDefaultAsync();
+                    if (user != null)
+                    {
+                        context.Entry(veiculo).State = EntityState.Detached;
+                        context.Veiculos.Update(model);
+                        await context.SaveChangesAsync();
+                        return model;
+                    }
+                    else
+                        return BadRequest(new { ResponsavelId = "Usuario não existe" });
+
                 }
                 else
                     return
@@ -68,10 +86,11 @@ namespace testeBitzen.Controllers
         }
         [HttpDelete]
         [Route("")]
+        [Authorize]
         public async Task<ActionResult<dynamic>> Delete([FromServices] DataContext context, [FromBody] Veiculo model)
         {
             if (model.Id == 0)
-                return BadRequest(new{ID= model.Id});
+                return BadRequest(new { ID = model.Id });
             var email = User.Claims.Where(c => c.Type == ClaimTypes.Email)
                    .Select(c => c.Value).SingleOrDefault();
             var veiculo = await context.Veiculos.Include(re => re.Responsavel)
@@ -85,7 +104,7 @@ namespace testeBitzen.Controllers
                 return Ok(new { Message = "deletado com sucesso" });
             }
             else
-                return NotFound(new{ID= model.Id});
+                return NotFound(new { ID = model.Id });
         }
 
 

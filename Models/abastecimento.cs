@@ -16,7 +16,7 @@ namespace testeBitzen.Models
 
         [Required(ErrorMessage = "Valor é obrigatorio")]
         [Range(0.1,float.MaxValue, ErrorMessage = "Valor deve ser maior que zero")]
-        public float ValorPago { get; set; }
+        public double ValorPago { get; set; }
         public DateTime DataDoAbastecimento {get;}
 
         [Required(ErrorMessage = "Posto é obrigatorio")]
@@ -25,16 +25,18 @@ namespace testeBitzen.Models
         public string Posto { get; set; }
 
         [Required(ErrorMessage = "Responsável é obrigatorio")]
-        public int ResponsavelID { get; set; }
+        public int ResponsavelId { get; set; }
 
         public User Responsavel { get; set; }
 
         [Required(ErrorMessage = "Tipo do combustivel é obrigatorio")]
         public string TipoDoCombustivel { get; set; }
 
+
+
+
         [Required(ErrorMessage = "Veículo é obrigatorio")]
-        public int VeiculoID { get; set; }
-        
+        public int VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
 
     }
