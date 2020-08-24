@@ -6,7 +6,7 @@
 
 ------------------------------------------------------  
 
-Para conexão com o banco é necessário um arquivo .env na raiz do programa com as seguintes variáveis 
+Para conexão com o banco é necessário um arquivo chamado '.env' na raiz do programa com as seguintes variáveis 
 
 USER=Usuario do SQLSERVER  
 PASSWORD= Senha  
